@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PRAXIS</title>
+<meta name="description" content="PRAXIS turns social saves into practice." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #201E1D;
+    --paper: #F3F2F2;
+    --accent: #EC3013;
+    --accent-deep: #AE1800;
+    --muted: #5F5A58;
+    --muted-soft: #6E6866;
+    --hairline: rgba(32,30,29,0.1);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    font-size: 15px;
+  }
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 22px 80px;
+  }
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 56px;
+  }
+  .wordmark {
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.28em;
+    color: var(--ink);
+  }
+  .icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  .hero {
+    margin-bottom: 48px;
+  }
+  h1 {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin: 0 0 16px;
+  }
+  .lede {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 480px;
+    margin: 0;
+  }
+  .loop {
+    margin-bottom: 48px;
+  }
+  .loop img {
+    width: 60%;
+    max-width: 320px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 32px 0;
+    border-top: 1px solid var(--hairline);
+  }
+  .feature img {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  .feature h3 {
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+  }
+  .feature p {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0;
+  }
+  footer {
+    padding-top: 20px;
+    border-top: 1px solid var(--hairline);
+    font-size: 12px;
+    color: var(--muted-soft);
+    display: flex;
+    gap: 16px;
+  }
+  footer a { color: var(--muted-soft); text-decoration: underline; }
+  a { color: var(--accent-deep); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="wordmark">PRAXIS</div>
+    <img src="./icon.png" alt="PRAXIS" class="icon" />
+  </div>
+
+  <div class="hero">
+    <h1>PRAXIS turns social saves into practice.</h1>
+    <p class="lede">
+      Save Shorts, Reels, threads and LinkedIn posts. PRAXIS sorts those saves against
+      a named goal, schedules them as timed sessions, and forces one reflection note
+      per session. Nothing counts until you log what you did with it.
+    </p>
+  </div>
+
+  <div class="loop">
+    <img src="./praxis-loop.png" alt="THE LOOP — 01 GOAL, 02 PLAN, 03 SESSION, 04 APPLY" />
+  </div>
+
+  <div class="feature">
+    <img src="./social-sources.png" alt="Save from any feed" />
+    <div>
+      <h3>Save From Any Feed, In One Place</h3>
+      <p>Share posts from any social media or the web, and find them all in one inbox.</p>
+    </div>
+  </div>
+  <div class="feature">
+    <img src="./save-to-practise.png" alt="Turn saves into practice" />
+    <div>
+      <h3>Turn Saves Into Practice</h3>
+      <p>Plan what you saved against a goal. Get reminded, take action, and watch your progress grow.</p>
+    </div>
+  </div>
+
+  <footer>
+    <a href="./privacy.html">Privacy Policy</a>
+    <a href="./terms.html">Terms of Service</a>
+  </footer>
+</div>
+</body>
+</html>
