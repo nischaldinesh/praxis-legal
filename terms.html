@@ -32,20 +32,23 @@
     margin: 0 auto;
     padding: 48px 22px 80px;
   }
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
   .wordmark {
     font-weight: 700;
     font-size: 15px;
     letter-spacing: 0.28em;
     color: var(--ink);
-    margin-bottom: 32px;
   }
-  .banner {
-    background: rgba(236,48,19,0.08);
-    border-left: 4px solid var(--accent);
-    padding: 14px 16px;
-    font-size: 13px;
-    color: var(--accent-deep);
-    margin-bottom: 32px;
+  .icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    object-fit: cover;
   }
   h1 {
     font-weight: 700;
@@ -88,11 +91,9 @@
 </head>
 <body>
 <div class="wrap">
-  <div class="wordmark">PRAXIS</div>
-
-  <div class="banner">
-    <strong>Draft.</strong> Written to reflect what the app actually does. Have it reviewed —
-    and fill in a governing-law jurisdiction — before publishing to the App Store / Play Store.
+  <div class="topbar">
+    <div class="wordmark">PRAXIS</div>
+    <img src="./icon.png" alt="PRAXIS" class="icon" />
   </div>
 
   <h1>Terms of Service</h1>
@@ -161,9 +162,6 @@
 
   <h2>Changes to these terms</h2>
   <p>If these terms change materially, we'll update the effective date above.</p>
-
-  <h2>Governing law</h2>
-  <p class="muted">[TODO — fill in your jurisdiction before publishing.]</p>
 
   <h2>Contact</h2>
   <p>Questions about these terms: <a href="mailto:nischaldgowda77@gmail.com">nischaldgowda77@gmail.com</a></p>
