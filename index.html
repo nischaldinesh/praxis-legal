@@ -5,20 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Praxis</title>
 <meta name="description" content="Praxis turns social saves into practice." />
+<link rel="icon" type="image/png" href="./icon.png" sizes="32x32" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   :root {
     --ink: #201E1D;
-    --paper: #F3F2F2;
-    --accent: #EC3013;
-    --accent-deep: #AE1800;
-    --muted: #5F5A58;
-    --muted-soft: #6E6866;
-    --hairline: rgba(32,30,29,0.1);
+    --paper: #f7f3ee;
+    --paper-2: #fffaf5;
+    --panel: rgba(255,255,255,0.78);
+    --card: #ffffff;
+    --accent: #ec3013;
+    --accent-2: #ff7d4d;
+    --accent-deep: #ae1800;
+    --muted: #5f5a58;
+    --muted-soft: #6e6866;
+    --hairline: rgba(32,30,29,0.08);
+    --shadow: 0 20px 50px rgba(70, 28, 12, 0.12);
   }
+
   * { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     margin: 0;
     background: var(--paper);
@@ -28,163 +40,550 @@
     line-height: 1.6;
     font-size: 15px;
   }
+
   .wrap {
-    max-width: 680px;
+    max-width: 1180px;
     margin: 0 auto;
-    padding: 48px 22px 80px;
+    padding: 28px 22px 72px;
   }
+
   .topbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 56px;
+    margin-bottom: 12px;
+    padding: 10px 4px;
   }
+
   .wordmark {
     font-weight: 700;
     font-size: 15px;
     letter-spacing: 0.28em;
     color: var(--ink);
   }
+
+  .brand-lockup {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.38);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 12px rgba(39, 18, 11, 0.03);
+    padding: 0;
+  }
+
+  .brand-lockup.right {
+    margin-left: auto;
+  }
+
   .icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
     object-fit: cover;
+    box-shadow: none;
+    display: block;
   }
+
   .hero {
-    margin-bottom: 48px;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 26px;
+    margin: 0 auto 44px;
+    padding: 0;
   }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: rgba(236,48,19,0.08);
+    border: 1px solid rgba(236,48,19,0.12);
+    color: var(--accent-deep);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, var(--accent-2), var(--accent));
+    box-shadow: 0 0 0 4px rgba(236,48,19,0.12);
+  }
+
   h1 {
     font-weight: 700;
-    font-size: 40px;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    margin: 0 0 16px;
+    font-size: clamp(2.7rem, 5vw, 4.5rem);
+    line-height: 0.96;
+    letter-spacing: -0.05em;
+    margin: 0 0 18px;
+    max-width: 620px;
   }
+
   .lede {
-    font-size: 16px;
+    font-size: 1.08rem;
+    line-height: 1.7;
     color: var(--muted);
-    max-width: 480px;
+    max-width: 560px;
     margin: 0;
   }
-  .loop {
-    margin-bottom: 48px;
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 26px;
   }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .button:hover {
+    transform: translateY(-1px);
+  }
+
+  .store-button,
+  .store-button:hover,
+  .store-button:focus,
+  .store-button:active,
+  .button,
+  .button:hover,
+  .button:focus,
+  .button:active,
+  footer a,
+  footer a:hover,
+  footer a:focus,
+  footer a:active {
+    text-decoration: none;
+  }
+
+  .button.primary {
+    background: linear-gradient(135deg, var(--accent) 0%, #ff6d3d 100%);
+    color: #fff;
+    box-shadow: 0 16px 26px rgba(236,48,19,0.24);
+  }
+
+  .button.secondary {
+    background: rgba(255,255,255,0.7);
+    color: var(--ink);
+    border: 1px solid rgba(32,30,29,0.08);
+  }
+
+  .store-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 58px;
+    padding: 0 18px 0 14px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.82);
+    color: var(--ink);
+    border: 1px solid rgba(32,30,29,0.08);
+    box-shadow: 0 10px 24px rgba(32, 30, 29, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .store-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 28px rgba(32, 30, 29, 0.06);
+    border-color: rgba(32,30,29,0.12);
+  }
+
+  .store-icon {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--accent-deep);
+    overflow: visible;
+  }
+
+  .store-icon svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+  }
+
+  .store-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.1;
+  }
+
+  .store-copy small {
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  .store-copy strong {
+    font-size: 0.92rem;
+    letter-spacing: -0.02em;
+  }
+
+  .store-toast {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, calc(-50% + 18px));
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--ink);
+    padding: 18px 24px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 28px 60px rgba(32,30,29,0.14), 0 8px 20px rgba(32,30,29,0.08);
+    min-width: min(82vw, 300px);
+    max-width: min(90vw, 360px);
+    text-align: center;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(32,30,29,0.08);
+  }
+
+  .store-toast.show {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  .visual-card {
+    position: relative;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  .visual-content {
+    position: relative;
+    z-index: 1;
+    background: transparent;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+  }
+
+  .mini-label {
+    display: none;
+  }
+
+  .loop {
+    margin-top: 0;
+  }
+
   .loop img {
-    width: 60%;
-    max-width: 320px;
+    width: 100%;
+    max-width: 360px;
     height: auto;
     display: block;
     margin: 0 auto;
+    filter: drop-shadow(0 18px 24px rgba(58, 29, 17, 0.14));
   }
+
+  .feature-section {
+    margin-top: 18px;
+    margin-bottom: 18px;
+  }
+
+  .feature-section h2 {
+    margin: 0 0 14px;
+    font-size: clamp(1.2rem, 2vw, 1.7rem);
+    letter-spacing: -0.02em;
+    font-weight: 600;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin: 0 0 40px;
+  }
+
   .feature {
     display: flex;
     align-items: center;
-    gap: 28px;
-    padding: 32px 0;
-    border-top: 1px solid var(--hairline);
+    gap: 24px;
+    padding: 22px 20px;
+    border: 1px solid var(--hairline);
+    border-radius: 22px;
+    background: rgba(255,255,255,0.58);
+    box-shadow: 0 12px 28px rgba(42, 19, 7, 0.04);
+    min-height: 200px;
   }
+
   .feature img {
-    width: 140px;
-    height: 140px;
+    width: 150px;
+    height: 150px;
     object-fit: contain;
     flex-shrink: 0;
+    filter: drop-shadow(0 14px 26px rgba(86, 44, 29, 0.12));
   }
+
   .feature h3 {
     font-weight: 600;
-    font-size: 18px;
-    letter-spacing: -0.01em;
-    margin: 0 0 6px;
+    font-size: clamp(1.15rem, 2vw, 1.6rem);
+    letter-spacing: -0.03em;
+    margin: 0 0 8px;
   }
+
   .feature p {
-    font-size: 14px;
+    font-size: 0.96rem;
     color: var(--muted);
     margin: 0;
+    line-height: 1.7;
   }
+
   .about {
-    padding: 32px 0;
-    border-top: 1px solid var(--hairline);
+    margin-top: 20px;
+    margin-bottom: 18px;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
   }
+
   .about h2 {
     font-weight: 600;
-    font-size: 18px;
-    letter-spacing: -0.01em;
-    margin: 0 0 10px;
+    font-size: clamp(1.2rem, 2vw, 1.7rem);
+    letter-spacing: -0.02em;
+    margin: 0 0 14px;
   }
+
+  .about-copy {
+    padding: 20px 22px;
+    border: 1px solid var(--hairline);
+    border-radius: 22px;
+    background: rgba(255,255,255,0.54);
+    box-shadow: 0 12px 30px rgba(32, 30, 29, 0.03);
+  }
+
   .about p {
-    font-size: 14px;
+    font-size: 0.97rem;
     color: var(--ink);
     margin: 0 0 12px;
+    line-height: 1.75;
   }
+
   .about p:last-child { margin-bottom: 0; }
+
   footer {
+    margin-top: 26px;
     padding-top: 20px;
     border-top: 1px solid var(--hairline);
     font-size: 12px;
     color: var(--muted-soft);
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 16px;
+    flex-wrap: wrap;
   }
-  footer a { color: var(--muted-soft); text-decoration: underline; }
+
+  .footer-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  footer a {
+    color: var(--muted-soft);
+    text-decoration: none;
+  }
+
   a { color: var(--accent-deep); }
+
+  @media (max-width: 860px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 26px;
+    }
+
+    .feature-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .feature {
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .wrap {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    .topbar {
+      margin-bottom: 24px;
+    }
+
+    .brand-lockup {
+      padding: 8px 12px;
+    }
+
+    .button {
+      width: 100%;
+    }
+
+    .feature {
+      padding: 18px 16px;
+    }
+
+    .feature img {
+      width: 120px;
+      height: 120px;
+    }
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="topbar">
     <div class="wordmark">Praxis</div>
-    <img src="./icon.png" alt="Praxis" class="icon" />
+    <div class="brand-lockup right">
+      <img src="./icon.png" alt="Praxis" class="icon" />
+    </div>
   </div>
 
   <div class="hero">
-    <h1>Praxis turns social saves into practice.</h1>
-    <p class="lede">
-      Save Shorts, Reels, threads and LinkedIn posts. Praxis sorts those saves against
-      a named goal, schedules them as timed sessions, and forces one reflection note
-      per session. Nothing counts until you log what you did with it.
-    </p>
-  </div>
-
-  <div class="loop">
-    <img src="./praxis-loop.png" alt="THE LOOP — 01 GOAL, 02 PLAN, 03 SESSION, 04 APPLY" />
-  </div>
-
-  <div class="feature">
-    <img src="./social-sources.png" alt="Save from any feed" />
     <div>
-      <h3>Save From Any Feed, In One Place</h3>
-      <p>Share posts from any social media or the web, and find them all in one inbox.</p>
+      <h1>Praxis turns saves into practice.</h1>
+      <p class="lede">
+        Save Shorts, Reels, threads and LinkedIn posts. Praxis sorts those saves against
+        a named goal, schedules them as timed sessions, and forces one reflection note
+        per session. Nothing counts until you log what you did with it.
+      </p>
+      <div class="cta-row">
+        <a href="https://play.google.com/store" class="store-button" target="_blank" rel="noopener noreferrer" data-message="Google Play is coming soon.">
+          <span class="store-icon" aria-hidden="true">
+            <img src="./playstore.png" alt="Google Play" style="width: 30px; height: 30px; display: block; object-fit: contain;" />
+          </span>
+          <span class="store-copy"><small>Get it on</small><strong>Google Play</strong></span>
+        </a>
+        <a href="https://www.apple.com/app-store/" class="store-button" target="_blank" rel="noopener noreferrer" data-message="The App Store launch is coming soon.">
+          <span class="store-icon" aria-hidden="true">
+            <img src="./game.png" alt="App Store" style="width: 30px; height: 30px; display: block; object-fit: contain;" />
+          </span>
+          <span class="store-copy"><small>Download on the</small><strong>App Store</strong></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="visual-card">
+      <div class="visual-content">
+        <div class="mini-label">The loop</div>
+        <div class="loop">
+          <img src="./praxis-loop.png" alt="THE LOOP — 01 GOAL, 02 PLAN, 03 SESSION, 04 APPLY" />
+        </div>
+      </div>
     </div>
   </div>
-  <div class="feature">
-    <img src="./save-to-practise.png" alt="Turn saves into practice" />
-    <div>
-      <h3>Turn Saves Into Practice</h3>
-      <p>Plan what you saved against a goal. Get reminded, take action, and watch your progress grow.</p>
-    </div>
-  </div>
 
-  <div class="about">
+  <div class="about" id="what-is-praxis">
     <h2>What is Praxis</h2>
-    <p>
-      Praxis is a mobile app for iOS and Android. People save Shorts, Reels, threads and
-      LinkedIn posts as they come across them, then use Praxis to turn those saves into
-      scheduled practice: each save is sorted against a goal the user names, placed into a
-      timed session, and closed out with a short reflection note on what they actually did
-      with it.
-    </p>
-    <p>
-      Praxis uses Google Sign-In so people can create an account and sign in without a
-      separate password. We only request a user's basic profile (name, email) to identify
-      their account — see the Privacy Policy below for full detail on what's collected and
-      how it's used.
-    </p>
+    <div class="about-copy">
+      <p>
+        Praxis is a mobile app for iOS and Android that helps people turn the content they save
+        into real learning and action. People bookmark Shorts, Reels, threads, LinkedIn posts,
+        and other interesting content as they come across them, but often never go back to them.
+        By sharing those posts or videos to Praxis, the app keeps them in one place and reminds
+        you to revisit them on purpose.
+      </p>
+      <p>
+        You can create a goal for what you want to learn or improve, then match each saved item to
+        that goal. Once you revisit it, Praxis helps you turn it into a practice session and asks for
+        a quick reflection note on what you learned, what stood out, and what you actually did with it.
+      </p>
+    </div>
+  </div>
+
+  <div class="feature-section">
+    <h2>How it works</h2>
+  </div>
+
+  <div class="feature-grid">
+    <div class="feature">
+      <img src="./social-sources.png" alt="Save from any feed" />
+      <div>
+        <h3>Save From Any Feed, In One Place</h3>
+        <p>Share posts from any social media or the web, and find them all in one inbox.</p>
+      </div>
+    </div>
+    <div class="feature">
+      <img src="./save-to-practise.png" alt="Turn saves into practice" />
+      <div>
+        <h3>Turn Saves Into Practice</h3>
+        <p>Plan what you saved against a goal. Get reminded, take action, reflect on what you learned, and watch your progress grow.</p>
+      </div>
+    </div>
   </div>
 
   <footer>
-    <a href="./privacy.html">Privacy Policy</a>
-    <a href="./terms.html">Terms of Service</a>
+    <div class="footer-meta">
+      <a href="./privacy.html">Privacy Policy</a>
+      <a href="./terms.html">Terms of Service</a>
+    </div>
+    <span>© 2026 praxisapp.dev | All rights reserved.</span>
   </footer>
 </div>
+<div id="coming-soon-toast" class="store-toast" role="status" aria-live="polite" aria-atomic="true"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toast = document.getElementById('coming-soon-toast');
+    const links = document.querySelectorAll('[data-message]');
+
+    links.forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+        if (!toast) return;
+        toast.textContent = link.dataset.message;
+        toast.classList.add('show');
+        window.clearTimeout(window.praxisToastTimer);
+        window.praxisToastTimer = window.setTimeout(function () {
+          toast.classList.remove('show');
+        }, 1800);
+      });
+    });
+  });
+</script>
 </body>
 </html>

@@ -86,6 +86,23 @@
     border-top: 1px solid var(--hairline);
     font-size: 12px;
     color: var(--muted-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .footer-brand {
+    color: var(--ink);
+    font-weight: 600;
   }
 </style>
 </head>
@@ -169,7 +186,13 @@
   <h2>Contact</h2>
   <p>Questions about this policy: <a href="mailto:nischaldgowda77@gmail.com">nischaldgowda77@gmail.com</a></p>
 
-  <footer>Praxis — <a href="./terms.html">Terms of Service</a></footer>
+  <footer>
+    <div class="footer-meta">
+      <span class="footer-brand">Praxis</span>
+      <a href="./terms.html">Terms of Service</a>
+    </div>
+    <span>© 2026 praxisapp.dev | All rights reserved.</span>
+  </footer>
 </div>
 </body>
 </html>
